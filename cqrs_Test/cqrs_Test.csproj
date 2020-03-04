@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Presenter\" />
+    <Folder Include="Presenter\Controller\" />
+    <Folder Include="Application\" />
+    <Folder Include="Application\Interfaces\" />
+    <Folder Include="Application\Models\" />
+    <Folder Include="Application\UseCase\" />
+    <Folder Include="Application\Models\Query\" />
+    <Folder Include="Application\UseCase\Customer\" />
+    <Folder Include="Application\UseCase\Merchant\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\" />
+    <Folder Include="Application\UseCase\Product\" />
+    <Folder Include="Application\UseCase\Customer\Command\" />
+    <Folder Include="Application\UseCase\Customer\Models\" />
+    <Folder Include="Application\UseCase\Customer\Queries\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Command\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Models\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Queries\" />
+    <Folder Include="Application\UseCase\Merchant\Command\" />
+    <Folder Include="Application\UseCase\Merchant\Models\" />
+    <Folder Include="Application\UseCase\Merchant\Queries\" />
+    <Folder Include="Application\UseCase\Product\Command\" />
+    <Folder Include="Application\UseCase\Product\Models\" />
+    <Folder Include="Application\UseCase\Product\Queries\" />
+    <Folder Include="Application\UseCase\Customer\Queries\GetCustomer\" />
+    <Folder Include="Application\UseCase\Customer\Queries\GetCustomers\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Infrastructure\Persistences\" />
+  </ItemGroup>
+</Project>
