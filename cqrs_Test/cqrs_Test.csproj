@@ -47,5 +47,23 @@
     <Folder Include="Application\UseCase\Customer\Queries\GetCustomers\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Infrastructure\Persistences\" />
+    <Folder Include="Application\UseCase\Customer\Command\DeleteCustomer\" />
+    <Folder Include="Application\UseCase\Customer\Command\PutCustomer\" />
+    <Folder Include="Application\UseCase\Customer\Command\PostCustomer\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Command\DeleteCustomerPaymentCard\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Command\PostCustomerPaymentCard\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Command\PutCustomerPaymentCard\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Queries\GetCustomerPaymentCard\" />
+    <Folder Include="Application\UseCase\CustomerPaymentCard\Queries\GetCustomerPaymentCards\" />
+    <Folder Include="Application\UseCase\Merchant\Command\DeleteMerchant\" />
+    <Folder Include="Application\UseCase\Merchant\Command\PostMerchant\" />
+    <Folder Include="Application\UseCase\Merchant\Command\PutMerchant\" />
+    <Folder Include="Application\UseCase\Merchant\Queries\GetMerchant\" />
+    <Folder Include="Application\UseCase\Merchant\Queries\GetMerchants\" />
+    <Folder Include="Application\UseCase\Product\Command\DeleteProduct\" />
+    <Folder Include="Application\UseCase\Product\Command\PostProduct\" />
+    <Folder Include="Application\UseCase\Product\Command\PutProduct\" />
+    <Folder Include="Application\UseCase\Product\Queries\GetProduct\" />
+    <Folder Include="Application\UseCase\Product\Queries\GetProducts\" />
   </ItemGroup>
 </Project>

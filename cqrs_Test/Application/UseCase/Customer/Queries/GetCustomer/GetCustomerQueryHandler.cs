@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using cqrs_Test.Application.Interfaces;
 using cqrs_Test.Application.UseCase.Customer.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace cqrs_Test.Application.UseCase.Customer.Queries.GetCustomer
 {
-    public class GetCustomerQueryHandler: IRequestHandler<GetCustomerQuery, GetCustomerDto>
+    public class GetCustomerQueryHandler : IRequestHandler<GetCustomerQuery, GetCustomerDto>
     {
-        private readonly IBlogContext _context;
+        private readonly IContext konteks;
 
-        public GetCustomerQueryHandler(IBlogContext context)
+        public GetCustomerQueryHandler(IContext context)
         {
-            _context = context;
+            konteks = context;
         }
         public async Task<GetCustomerDto> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
         {
 
-            var result = await _context.Creators.FirstOrDefaultAsync(e => e.id == request.id);
+            var result = await konteks.Customer.FirstOrDefaultAsync(e => e.id == request.id);
 
             return new GetCustomerDto
             {
                 Status = true,
-                Message = "Creator successfully retrieved",
+                Message = "Customer successfully retrieved",
                 Data = result
             };
 

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace cqrs_Test.Domain.Entities
 {
-    public class Merchant
+    public class Merchants
     {
         public int id { get; set; }
         public string name { get; set; }

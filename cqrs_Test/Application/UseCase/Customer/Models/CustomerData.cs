@@ -17,7 +17,7 @@ namespace cqrs_Test.Application.UseCase.Customer.Models
     }
     public enum kelamin
     {
-        male = 1,
+        male ,
         female,
         transexual_male,
         transexual_female,

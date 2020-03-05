@@ -1,29 +1,40 @@
 ﻿<Properties StartupConfiguration="{40A35001-75A5-4345-8F30-28479483287E}|Default">
   <MonoDevelop.Ide.ItemProperties.cqrs__Test FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="cqrs_Test/Infrastructure/Persistences/Context.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="cqrs_Test/Presenter/Controller/CustomerController.cs">
     <Files>
-      <File FileName="cqrs_Test/Application/UseCase/Customer/Queries/GetCustomer/GetCustomerDto.cs" Line="9" Column="46" />
-      <File FileName="cqrs_Test/Application/UseCase/Customer/Queries/GetCustomer/GetCustomerQuery.cs" Line="6" Column="34" />
-      <File FileName="cqrs_Test/Application/UseCase/Customer/Queries/GetCustomer/GetCustomerQueryHandler.cs" Line="13" Column="41" />
-      <File FileName="cqrs_Test/Application/UseCase/Customer/Queries/GetCustomer/GetCustomerValidator.cs" Line="22" Column="1" />
-      <File FileName="cqrs_Test/Infrastructure/Persistences/Context.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Product/Command/DeleteProduct/DeleteProductCommand.cs" Line="12" Column="36" />
+      <File FileName="cqrs_Test/Presenter/Controller/CustomerController.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Merchant/Command/DeleteMerchant/DeleteMerchantCommand.cs" Line="6" Column="40" NotebookId="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Merchant/Command/DeleteMerchant/DeleteMerchantCommandDto.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Merchant/Command/DeleteMerchant/DeleteMerchantCommandHandler.cs" Line="42" Column="6" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="cqrs_Test" expanded="True">
             <Node name="cqrs_Test" expanded="True">
-              <Node name="Application" expanded="True" />
+              <Node name="Application" expanded="True">
+                <Node name="UseCase" expanded="True">
+                  <Node name="Merchant" expanded="True">
+                    <Node name="Command" expanded="True" />
+                  </Node>
+                  <Node name="Product" expanded="True">
+                    <Node name="Command" expanded="True">
+                      <Node name="DeleteProduct" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
               <Node name="Domain" expanded="True">
                 <Node name="Entities" expanded="True" />
               </Node>
               <Node name="Infrastructure" expanded="True">
-                <Node name="Persistences" expanded="True">
-                  <Node name="Context.cs" selected="True" />
-                </Node>
+                <Node name="Persistences" expanded="True" />
               </Node>
               <Node name="Presenter" expanded="True">
-                <Node name="Controller" expanded="True" />
+                <Node name="Controller" expanded="True">
+                  <Node name="CustomerController.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
