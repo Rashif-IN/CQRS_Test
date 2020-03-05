@@ -1,10 +1,16 @@
 ﻿using System;
+using MediatR;
+
 namespace cqrs_Test.Application.UseCase.Product.Command.DeleteProduct
 {
-    public class DeleteProductCommand
+    public class DeleteProductCommand : IRequest<DeleteProductCommandDto>
     {
-        public DeleteProductCommand()
+        public int Id { get; set; }
+
+        public DeleteProductCommand(int id)
         {
+            Id = id;
         }
     }
+    
 }

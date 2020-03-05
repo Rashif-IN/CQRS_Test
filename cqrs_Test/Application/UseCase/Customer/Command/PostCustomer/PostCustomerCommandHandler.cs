@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using cqrs_Test.Application.Interfaces;
 using cqrs_Test.Application.Models.Query;
+using cqrs_Test.Domain.Entities;
 using MediatR;
 
 namespace cqrs_Test.Application.UseCase.Customer.Command.PostCustomer
@@ -15,26 +16,27 @@ namespace cqrs_Test.Application.UseCase.Customer.Command.PostCustomer
         {
             konteks = context;
         }
-        public async Task<PostCustomerCommandDto> Handle(RequestData<PostCustomerCommand> request, CancellationToken cancellationToken)
-        {
+    
 
+        public async Task<PostCustomerCommandDto> Handle(PostCustomerCommand request, CancellationToken cancellationToken)
+        {
             var customers = new Domain.Entities.Customers
             {
-                full_name = request.Dataa.Attributes.Data.full_name,
-                username = request.Dataa.Attributes.Data.username,
-                birthdate = request.Dataa.Attributes.Data.birthdate,
-                password = request.Dataa.Attributes.Data.password,
-                sex = request.Dataa.Attributes.Data.sex,
-                email = request.Dataa.Attributes.Data.email,
-                phone_number = request.Dataa.Attributes.Data.phone_number
+                full_name = request.Dataa.Attributes.full_name,
+                username = request.Dataa.Attributes.username,
+                birthdate = request.Dataa.Attributes.birthdate,
+                password = request.Dataa.Attributes.password,
+                sex = request.Dataa.Attributes.sex,
+                email = request.Dataa.Attributes.email,
+                phone_number = request.Dataa.Attributes.phone_number
             };
-            if (request.Dataa.Attributes.Data.sex == "male")
+            if (request.Dataa.Attributes.sex == "male")
             {
-                request.Dataa.Attributes.Data.gender = kelamin.male;
+                request.Dataa.Attributes.gender = kelamin.male;
             }
-            else if (request.Dataa.Attributes.Data.sex == "female")
+            else if (request.Dataa.Attributes.sex == "female")
             {
-                request.Dataa.Attributes.Data.gender = kelamin.female;
+                request.Dataa.Attributes.gender = kelamin.female;
             }
             konteks.Customer.Add(customers);
             await konteks.SaveChangesAsync(cancellationToken);
@@ -44,7 +46,7 @@ namespace cqrs_Test.Application.UseCase.Customer.Command.PostCustomer
                 Status = true,
                 Message = "Customer successfully posted",
             };
-
+            //throw new NotImplementedException();
         }
     }
 }

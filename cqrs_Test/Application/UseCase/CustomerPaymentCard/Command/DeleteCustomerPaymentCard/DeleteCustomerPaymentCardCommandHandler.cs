@@ -14,9 +14,9 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.DeleteCustom
         {
             konteks = context;
         }
-        public async Task<DeleteCustomerPaymentCardCommandDto> Handle(DeleteCustomerPaymentCardCommand request, int ID, CancellationToken cancellationToken)
+        public async Task<DeleteCustomerPaymentCardCommandDto> Handle(DeleteCustomerPaymentCardCommand request, CancellationToken cancellationToken)
         {
-            var data = await konteks.CPC.FindAsync(ID);
+            var data = await konteks.CPC.FindAsync(request.Id);
             if (data == null)
             {
                 return new DeleteCustomerPaymentCardCommandDto

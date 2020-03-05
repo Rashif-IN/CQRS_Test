@@ -14,9 +14,11 @@ namespace cqrs_Test.Application.UseCase.Product.Command.DeleteProduct
         {
             konteks = context;
         }
-        public async Task<DeleteProductCommandDto> Handle(DeleteProductCommand request, int ID, CancellationToken cancellationToken)
+       
+
+        public async Task<DeleteProductCommandDto> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            var data = await konteks.merhcants.FindAsync(ID);
+            var data = await konteks.merhcants.FindAsync(request.Id);
             if (data == null)
             {
                 return new DeleteProductCommandDto
@@ -36,8 +38,7 @@ namespace cqrs_Test.Application.UseCase.Product.Command.DeleteProduct
                     Message = "Product sucessfully removed"
                 };
             }
-
-
+            //throw new NotImplementedException();
         }
     }
 }

@@ -5,12 +5,12 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.DeleteCustom
 {
     public class DeleteCustomerPaymentCardCommand : IRequest<DeleteCustomerPaymentCardCommandDto>
     {
-        public DeleteCustomerPaymentCardData Data { get; set; }
-
+        public int Id { get; set; }
+        public DeleteCustomerPaymentCardCommand(int id)
+        {
+            Id = id;
+        }
     }
-    public class DeleteCustomerPaymentCardData : IRequest<DeleteCustomerPaymentCardCommandDto>
-    {
-        public int id { get; set; }
-    }
+    
 
 }

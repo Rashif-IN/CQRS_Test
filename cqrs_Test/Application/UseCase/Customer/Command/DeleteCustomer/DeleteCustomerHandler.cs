@@ -14,9 +14,12 @@ namespace cqrs_Test.Application.UseCase.Customer.Command.DeleteCustomer
         {
             konteks = context;
         }
-        public async Task<DeleteCustomerCommandDto> Handle(DeleteCustomerCommand request, int ID, CancellationToken cancellationToken)
+        
+
+        public async Task<DeleteCustomerCommandDto> Handle(DeleteCustomerCommand request, CancellationToken cancellationToken)
         {
-            var data = await konteks.Customer.FindAsync(ID);
+            var data = await konteks.Customer.FindAsync(request.Id);
+
             if (data == null)
             {
                 return new DeleteCustomerCommandDto
@@ -36,8 +39,7 @@ namespace cqrs_Test.Application.UseCase.Customer.Command.DeleteCustomer
                     Message = "Customer sucessfully added"
                 };
             }
-
-
+            //throw new NotImplementedException();
         }
     }
 }

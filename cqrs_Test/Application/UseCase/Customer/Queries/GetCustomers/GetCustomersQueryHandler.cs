@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using cqrs_Test.Application.Interfaces;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace cqrs_Test.Application.UseCase.Customer.Queries.GetCustomers
 {
@@ -12,9 +16,10 @@ namespace cqrs_Test.Application.UseCase.Customer.Queries.GetCustomers
         {
             konteks = context;
         }
-        public async Task<GetCustomersDto>()
+
+        public async Task<GetCustomersDto> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
         {
-            var result = await konteks.Customer;
+            var result = await konteks.Customer.ToListAsync();
 
             return new GetCustomersDto
             {
@@ -23,5 +28,7 @@ namespace cqrs_Test.Application.UseCase.Customer.Queries.GetCustomers
                 Data = result
             };
         }
+
+       
     }
 }

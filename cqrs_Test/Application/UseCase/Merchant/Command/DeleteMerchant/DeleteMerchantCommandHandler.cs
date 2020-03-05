@@ -14,9 +14,11 @@ namespace cqrs_Test.Application.UseCase.Merchant.Command.DeleteMerchant
         {
             konteks = context;
         }
-        public async Task<DeleteMerchantCommandDto> Handle(DeleteMerchantCommand request, int ID, CancellationToken cancellationToken)
+        
+
+        public async Task<DeleteMerchantCommandDto> Handle(DeleteMerchantCommand request, CancellationToken cancellationToken)
         {
-            var data = await konteks.merhcants.FindAsync(ID);
+            var data = await konteks.merhcants.FindAsync(request.Id);
             if (data == null)
             {
                 return new DeleteMerchantCommandDto
@@ -36,8 +38,7 @@ namespace cqrs_Test.Application.UseCase.Merchant.Command.DeleteMerchant
                     Message = "Merchant sucessfully removed"
                 };
             }
-
-
+            throw new NotImplementedException();
         }
     }
 }

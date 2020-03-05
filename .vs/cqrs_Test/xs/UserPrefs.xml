@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{40A35001-75A5-4345-8F30-28479483287E}|Default">
   <MonoDevelop.Ide.ItemProperties.cqrs__Test FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="cqrs_Test/Presenter/Controller/CustomerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="cqrs_Test/Domain/Entities/Customers.cs">
     <Files>
-      <File FileName="cqrs_Test/Application/UseCase/Product/Command/DeleteProduct/DeleteProductCommand.cs" Line="12" Column="36" />
-      <File FileName="cqrs_Test/Presenter/Controller/CustomerController.cs" Line="1" Column="1" />
-      <File FileName="cqrs_Test/Application/UseCase/Merchant/Command/DeleteMerchant/DeleteMerchantCommand.cs" Line="6" Column="40" NotebookId="1" />
-      <File FileName="cqrs_Test/Application/UseCase/Merchant/Command/DeleteMerchant/DeleteMerchantCommandDto.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="cqrs_Test/Application/UseCase/Merchant/Command/DeleteMerchant/DeleteMerchantCommandHandler.cs" Line="42" Column="6" NotebookId="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Customer/Command/PutCustomer/PutCustomerCommandHandler.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/Models/Query/BaseDto.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/CustomerPaymentCard/Command/PostCustomerPaymentCard/PostCustomerPaymentCardCommandValidation.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/CustomerPaymentCard/Command/PostCustomerPaymentCard/PostCustomerPaymentCardCommandHandler.cs" Line="31" Column="70" />
+      <File FileName="cqrs_Test/Domain/Entities/Customers.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,9 +14,26 @@
           <Node name="cqrs_Test" expanded="True">
             <Node name="cqrs_Test" expanded="True">
               <Node name="Application" expanded="True">
+                <Node name="Interfaces" expanded="True" />
+                <Node name="Models" expanded="True">
+                  <Node name="Query" expanded="True" />
+                </Node>
                 <Node name="UseCase" expanded="True">
+                  <Node name="Customer" expanded="True">
+                    <Node name="Command" expanded="True">
+                      <Node name="DeleteCustomer" expanded="True" />
+                      <Node name="PutCustomer" expanded="True" />
+                    </Node>
+                  </Node>
+                  <Node name="CustomerPaymentCard" expanded="True">
+                    <Node name="Command" expanded="True">
+                      <Node name="PostCustomerPaymentCard" expanded="True" />
+                    </Node>
+                  </Node>
                   <Node name="Merchant" expanded="True">
-                    <Node name="Command" expanded="True" />
+                    <Node name="Command" expanded="True">
+                      <Node name="DeleteMerchant" expanded="True" />
+                    </Node>
                   </Node>
                   <Node name="Product" expanded="True">
                     <Node name="Command" expanded="True">
@@ -26,15 +43,15 @@
                 </Node>
               </Node>
               <Node name="Domain" expanded="True">
-                <Node name="Entities" expanded="True" />
+                <Node name="Entities" expanded="True">
+                  <Node name="Customers.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="Infrastructure" expanded="True">
                 <Node name="Persistences" expanded="True" />
               </Node>
               <Node name="Presenter" expanded="True">
-                <Node name="Controller" expanded="True">
-                  <Node name="CustomerController.cs" selected="True" />
-                </Node>
+                <Node name="Controller" expanded="True" />
               </Node>
             </Node>
           </Node>

@@ -26,9 +26,7 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PostCustomer
                 exp_month = request.Dataa.Attributes.Data.exp_month,
                 exp_year = request.Dataa.Attributes.Data.exp_year,
                 postal_code = request.Dataa.Attributes.Data.postal_code,
-                credit_card_number = request.Dataa.Attributes.Data.credit_card_number,
-                created_at = request.Dataa.Attributes.Data.created_at,
-                updated_at = request.Dataa.Attributes.Data.updated_at
+                credit_card_number = request.Dataa.Attributes.Data.credit_card_number
             };
             
             konteks.CPC.Add(cpc);

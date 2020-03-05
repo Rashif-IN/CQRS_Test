@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Mediatr_FluentValidation_Test.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cqrs_Test.Presenter.Controller
@@ -89,3 +88,4 @@ namespace cqrs_Test.Presenter.Controller
 
 
     }
+}
