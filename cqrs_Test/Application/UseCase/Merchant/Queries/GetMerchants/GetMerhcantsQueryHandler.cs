@@ -18,7 +18,7 @@ namespace cqrs_Test.Application.UseCase.Merchant.Queries.GetMerchants
         public async Task<GetMerchantsDto> Handle(GetMerchantsQuery request, CancellationToken cancellationToken)
         {
 
-            var result = await konteks.merhcants;
+            var result = await konteks.merhcants.ToListAsync();
 
             return new GetMerchantsDto
             {

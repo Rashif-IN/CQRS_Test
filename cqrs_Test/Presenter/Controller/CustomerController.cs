@@ -2,6 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using cqrs_Test.Application.UseCase.Customer.Command.DeleteCustomer;
+using cqrs_Test.Application.UseCase.Customer.Command.PostCustomer;
+using cqrs_Test.Application.UseCase.Customer.Command.PutCustomer;
+using cqrs_Test.Application.UseCase.Customer.Queries.GetCustomer;
+using cqrs_Test.Application.UseCase.Customer.Queries.GetCustomers;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cqrs_Test.Presenter.Controller
@@ -10,80 +16,49 @@ namespace cqrs_Test.Presenter.Controller
     [Route("customer")]
     public class CustomerController : ControllerBase
     {
-        private readonly Contextt konteks;
 
-        public CustomerController(Contextt context)
+        private IMediator meciater;
+
+        public CustomerController(IMediator mediatr)
         {
-            konteks = context;
+            meciater = mediatr;
         }
 
-
         [HttpGet]
-        public IActionResult Get()
+        public async Task<ActionResult<GetCustomersDto>> Get()
         {
-            var data = konteks.Customer;
-            return Ok(new { Message = "Success retreiving data", Status = true, Data = data });
+            var result = new GetCustomersQuery();
+            return Ok(await meciater.Send(result));
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int ID)
+        public async Task<ActionResult<GetCustomerDto>> Get(int ID)
         {
-            var data = konteks.Customer.Find(ID);
-
-            if (data == null)
-            {
-                return NotFound(new { Message = "Customer not found", Status = false });
-            }
-
-            return Ok(new { Message = "Success retreiving data", Status = true, Data = data });
+            var result = new GetCustomerQuery(ID);
+            return Ok(await meciater.Send(result));
         }
 
         [HttpPost]
-        public IActionResult Post(RequestData<Customers> data)
+        public async Task<IActionResult> Post(PostCustomerCommand data)
         {
-            konteks.Customer.Add(data.Dataa.Attributes);
-            if (data.Dataa.Attributes.sex == "male")
-            {
-                data.Dataa.Attributes.gender = kelamin.male;
-            }
-            else if (data.Dataa.Attributes.sex == "female")
-            {
-                data.Dataa.Attributes.gender = kelamin.female;
-            }
-            konteks.SaveChanges();
-            return Ok();
+            var result = await meciater.Send(data);
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, RequestData<Customers> data)
+        public async Task<IActionResult> Put(int ID, PutCustomerCommand data)
         {
-            var query = konteks.Customer.Find(id);
-            query.full_name = data.Dataa.Attributes.full_name;
-            query.username = data.Dataa.Attributes.username;
-            query.birthdate = data.Dataa.Attributes.birthdate;
-            query.password = data.Dataa.Attributes.password;
-            query.gender = data.Dataa.Attributes.gender;
-            query.email = data.Dataa.Attributes.email;
-            query.phone_number = data.Dataa.Attributes.phone_number;
-            query.updated_at = DateTime.Now;
-            konteks.SaveChanges();
-            return NoContent();
+            data.Dataa.Attributes.id = ID;
+            var result = await meciater.Send(data);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int ID)
         {
-            var data = await konteks.Customer.FindAsync(id);
-
-            if (data == null)
-            {
-                return NotFound(new { Message = "Customer not found", Status = false });
-            }
-
-            konteks.Customer.Remove(data);
-            await konteks.SaveChangesAsync();
-
-            return Ok();
+            var command = new DeleteCustomerCommand(ID);
+            var result = await meciater.Send(command);
+            return result != null ? (IActionResult)Ok(new { Message = "success" }) : NotFound(new { Message = "not found" });
         }
 
 

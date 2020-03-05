@@ -19,7 +19,7 @@ namespace cqrs_Test.Application.UseCase.Customer.Queries.GetCustomer
         public async Task<GetCustomerDto> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
         {
 
-            var result = await konteks.Customer.FirstOrDefaultAsync(e => e.id == request.id);
+            var result = await konteks.Customer.FirstOrDefaultAsync(e => e.id == request.Id);
 
             return new GetCustomerDto
             {

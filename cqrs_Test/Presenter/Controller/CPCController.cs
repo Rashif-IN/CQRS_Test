@@ -2,7 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Mediatr_FluentValidation_Test.Model;
+using cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.DeleteCustomerPaymentCard;
+using cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PostCustomerPaymentCard;
+using cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PutCustomerPaymentCard;
+using cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerPaymentCard;
+using cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerPaymentCards;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,76 +19,49 @@ namespace cqrs_Test.Presenter.Controller
     [Route("customer_pc")]
     public class CPCController : ControllerBase
     {
-        private readonly Contextt konteks;
+        private IMediator meciater;
 
-        public CPCController(Contextt context)
+        public CPCController(IMediator mediatr)
         {
-            konteks = context;
+            meciater = mediatr;
         }
 
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<ActionResult<GetCustomerPaymentCardsDto>> GetAsync()
         {
-            List<object> allData = new List<object>();
-            var data = konteks.CPC;
-            foreach (var x in data)
-            {
-                allData.Add(new { x.id, x.customer_id, x.name_on_card, x.exp_month, x.exp_year, x.postal_code, x.credit_card_number });
-            }
-            return Ok(new { Message = "Success retreiving data", Status = true, Data = allData });
+            var result = new GetCustomerPaymentCardsQuery();
+            return Ok(await meciater.Send(result));
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int ID)
+        public async Task<ActionResult<GetCustomerPaymentCardDto>> Get(int ID)
         {
-            var data = konteks.CPC.Find(ID);
-
-            if (data == null)
-            {
-                return NotFound(new { Message = "Customer not found", Status = false });
-            }
-
-            return Ok(new { Message = "Success retreiving data", Status = true, Data = data });
+            var result = new GetCustomerPaymentCardQuery(ID);
+            return Ok(await meciater.Send(result));
         }
 
         [HttpPost]
-        public IActionResult Post(RequestData<Customer_Payment_Card> data)
+        public async Task<IActionResult> Post(PostCustomerPaymentCardCommand data)
         {
-            konteks.CPC.Add(data.Dataa.Attributes);
-            konteks.SaveChanges();
-            return Ok();
+            var result = await meciater.Send(data);
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, RequestData<Customer_Payment_Card> data)
+        public async Task<IActionResult> Put(int ID, PutCustomerPaymentCardCommand data)
         {
-            var query = konteks.CPC.Find(id);
-            query.customer_id = data.Dataa.Attributes.customer_id;
-            query.name_on_card = data.Dataa.Attributes.name_on_card;
-            query.exp_month = data.Dataa.Attributes.exp_month;
-            query.exp_year = data.Dataa.Attributes.exp_year;
-            query.postal_code = data.Dataa.Attributes.postal_code;
-            query.credit_card_number = data.Dataa.Attributes.credit_card_number;
-            query.updated_at = DateTime.Now;
-            konteks.SaveChanges();
-            return NoContent();
+            data.Dataa.Attributes.id = ID;
+            var result = await meciater.Send(data);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int ID)
         {
-            var data = await konteks.CPC.FindAsync(id);
-
-            if (data == null)
-            {
-                return NotFound(new { Message = "Customer not found", Status = false });
-            }
-
-            konteks.CPC.Remove(data);
-            await konteks.SaveChangesAsync();
-
-            return Ok();
+            var command = new DeleteCustomerPaymentCardCommand(ID);
+            var result = await meciater.Send(command);
+            return result != null ? (IActionResult)Ok(new { Message = "success" }) : NotFound(new { Message = "not found" });
         }
 
 

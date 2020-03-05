@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using cqrs_Test.Application.Interfaces;
+using cqrs_Test.Application.Models.Query;
+using cqrs_Test.Application.UseCase.Customer.Command.PostCustomer;
+using cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PostCustomerPaymentCard;
+using cqrs_Test.Application.UseCase.Merchant.Command.PostMerchant;
+using cqrs_Test.Application.UseCase.Product.Command.PostProduct;
+using cqrs_Test.Domain.Entities;
+using cqrs_Test.Infrastructure.Persistences;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -52,10 +61,10 @@ namespace cqrs_Test
                 };
             });
 
-            services.AddTransient<IValidator<RequestData<Customers>>, CustomerValidator>()
-                .AddTransient<IValidator<RequestData<Customer_Payment_Card>>, CustomerPCValidator>()
-                .AddTransient<IValidator<RequestData<Merhcant>>, MerchantValidator>()
-                .AddTransient<IValidator<RequestData<Products>>, ProductsValidator>();
+            services.AddTransient<IValidator<PostCustomerCommand>, PostCustomerCommandValidation>()
+                .AddTransient<IValidator<PostCustomerPaymentCardCommand>, PostCustomerPaymentCardCommandValidation>()
+                .AddTransient<IValidator<PostMerchantCommand>, PostMerchantCommandValidation>()
+                .AddTransient<IValidator<PostProductCommand>, PostProductCommandValidation>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidator<,>));
 

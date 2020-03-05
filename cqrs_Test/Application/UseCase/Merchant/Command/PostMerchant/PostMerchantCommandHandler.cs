@@ -15,18 +15,17 @@ namespace cqrs_Test.Application.UseCase.Merchant.Command.PostMerchant
         {
             konteks = context;
         }
-        public async Task<PostMerchantCommandDto> Handle(RequestData<PostMerchantCommand> request, CancellationToken cancellationToken)
-        {
+       
 
+        public async Task<PostMerchantCommandDto> Handle(PostMerchantCommand request, CancellationToken cancellationToken)
+        {
             var mer = new Domain.Entities.Merchants
             {
-                id = request.Dataa.Attributes.Data.id,
-                name = request.Dataa.Attributes.Data.name,
-                image = request.Dataa.Attributes.Data.image,
-                address = request.Dataa.Attributes.Data.address,
-                rating = request.Dataa.Attributes.Data.rating,
-                created_at = request.Dataa.Attributes.Data.created_at,
-                updated_at = request.Dataa.Attributes.Data.updated_at
+                id = request.Dataa.Attributes.id,
+                name = request.Dataa.Attributes.name,
+                image = request.Dataa.Attributes.image,
+                address = request.Dataa.Attributes.address,
+                rating = request.Dataa.Attributes.rating
             };
 
             konteks.merhcants.Add(mer);
@@ -35,9 +34,8 @@ namespace cqrs_Test.Application.UseCase.Merchant.Command.PostMerchant
             return new PostMerchantCommandDto
             {
                 Status = true,
-                Message = "Merchant successfully posted",
+                Message = "Merchant successfully posted"
             };
-
         }
     }
 }

@@ -18,7 +18,7 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerP
         public async Task<GetCustomerPaymentCardDto> Handle(GetCustomerPaymentCardQuery request, CancellationToken cancellationToken)
         {
 
-            var result = await konteks.CPC.FirstOrDefaultAsync(e => e.id == request.id);
+            var result = await konteks.CPC.FirstOrDefaultAsync(e => e.id == request.Id);
 
             return new GetCustomerPaymentCardDto
             {

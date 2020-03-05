@@ -12,8 +12,8 @@ namespace cqrs_Test.Infrastructure.Persistences
 
         public DbSet<Customers> Customer { get; set; }
         public DbSet<Products> Product { get; set; }
-        public DbSet<CustomerPaymentCard> CPC { get; set; }
-        public DbSet<Merchant> merhcants { get; set; }
+        public DbSet<CustomerPaymentCards> CPC { get; set; }
+        public DbSet<Merchants> merhcants { get; set; }
 
     }
 }

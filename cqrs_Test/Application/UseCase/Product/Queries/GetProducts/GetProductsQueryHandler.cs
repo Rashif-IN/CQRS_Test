@@ -19,9 +19,9 @@ namespace cqrs_Test.Application.UseCase.Product.Queries.GetProducts
         public async Task<GetProductsDto> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
 
-            var result = await konteks.Product;
+            var result = await konteks.Product.ToListAsync();
 
-            return new GetProductDto
+            return new GetProductsDto
             {
                 Status = true,
                 Message = "Product successfully retrieved",

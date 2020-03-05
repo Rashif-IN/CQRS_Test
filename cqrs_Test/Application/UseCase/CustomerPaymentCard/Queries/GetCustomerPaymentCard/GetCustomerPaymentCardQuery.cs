@@ -5,6 +5,10 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerP
 {
     public class GetCustomerPaymentCardQuery : IRequest<GetCustomerPaymentCardDto>
     {
-        public int id { get; set; }
+        public int Id { get; set; }
+        public GetCustomerPaymentCardQuery(int id)
+        {
+            Id = id;
+        }
     }
 }

@@ -15,15 +15,14 @@ namespace cqrs_Test.Application.UseCase.Product.Command.PutProduct
         {
             konteks = context;
         }
-        public async Task<PutProductCommandDto> Handle(RequestData<PutProductCommand> request, CancellationToken cancellationToken, int ID)
+        
+        public async Task<PutProductCommandDto> Handle(PutProductCommand request, CancellationToken cancellationToken)
         {
-
-            var pro = konteks.Product.Find(ID);
-            pro.merhcant_id = request.Dataa.Attributes.Data.merhcant_id;
-            pro.name = request.Dataa.Attributes.Data.name;
-            pro.price = request.Dataa.Attributes.Data.price;
-            
-            pro.updated_at = request.Dataa.Attributes.Data.updated_at;
+            var pro = konteks.Product.Find(request.Dataa.Attributes.id);
+            pro.merhcant_id = request.Dataa.Attributes.merhcant_id;
+            pro.name = request.Dataa.Attributes.name;
+            pro.price = request.Dataa.Attributes.price;
+            pro.updated_at = request.Dataa.Attributes.updated_at;
 
 
 
@@ -34,7 +33,6 @@ namespace cqrs_Test.Application.UseCase.Product.Command.PutProduct
                 Status = true,
                 Message = "Product successfully putted"
             };
-
         }
     }
 }

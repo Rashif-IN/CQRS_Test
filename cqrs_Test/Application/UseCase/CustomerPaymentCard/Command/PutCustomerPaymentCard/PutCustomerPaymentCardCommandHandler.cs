@@ -15,19 +15,20 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PutCustomerP
         {
             konteks = context;
         }
-        public async Task<PutCustomerPaymentCardCommandDto> Handle(RequestData<PutCustomerPaymentCardCommand> request, CancellationToken cancellationToken, int ID)
+       
+
+        public async Task<PutCustomerPaymentCardCommandDto> Handle(PutCustomerPaymentCardCommand request, CancellationToken cancellationToken)
         {
+            var cpc = konteks.CPC.Find(request.Dataa.Attributes.id);
+            cpc.customer_id = request.Dataa.Attributes.customer_id;
+            cpc.name_on_card = request.Dataa.Attributes.name_on_card;
+            cpc.exp_month = request.Dataa.Attributes.exp_month;
+            cpc.exp_year = request.Dataa.Attributes.exp_year;
+            cpc.postal_code = request.Dataa.Attributes.postal_code;
+            cpc.credit_card_number = request.Dataa.Attributes.credit_card_number;
+            cpc.updated_at = request.Dataa.Attributes.updated_at;
 
-            var cpc = konteks.CPC.Find(ID);
-            cpc.customer_id = request.Dataa.Attributes.Data.customer_id;
-            cpc.name_on_card = request.Dataa.Attributes.Data.name_on_card;
-            cpc.exp_month = request.Dataa.Attributes.Data.exp_month;
-            cpc.exp_year = request.Dataa.Attributes.Data.exp_year;
-            cpc.postal_code = request.Dataa.Attributes.Data.postal_code;
-            cpc.credit_card_number = request.Dataa.Attributes.Data.credit_card_number;
-            cpc.updated_at = request.Dataa.Attributes.Data.updated_at;
 
-            
 
             await konteks.SaveChangesAsync(cancellationToken);
 
@@ -36,7 +37,6 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PutCustomerP
                 Status = true,
                 Message = "Customer Payment Card successfully putted"
             };
-
         }
     }
 }

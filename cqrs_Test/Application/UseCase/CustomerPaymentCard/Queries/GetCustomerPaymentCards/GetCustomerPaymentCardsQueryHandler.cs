@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using cqrs_Test.Application.Interfaces;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerPaymentCards
 {
@@ -14,10 +15,11 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerP
         {
             konteks = context;
         }
+
         public async Task<GetCustomerPaymentCardsDto> Handle(GetCustomerPaymentCardsQuery request, CancellationToken cancellationToken)
         {
 
-            var result = await konteks.CPC;
+            var result = await konteks.CPC.ToListAsync();
 
             return new GetCustomerPaymentCardsDto
             {

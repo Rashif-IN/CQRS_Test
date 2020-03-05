@@ -2,83 +2,63 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Mediatr_FluentValidation_Test.Model;
-using Microsoft.AspNetCore.Authorization;
+using cqrs_Test.Application.UseCase.Product.Command.DeleteProduct;
+using cqrs_Test.Application.UseCase.Product.Command.PostProduct;
+using cqrs_Test.Application.UseCase.Product.Command.PutProduct;
+using cqrs_Test.Application.UseCase.Product.Queries.GetProduct;
+using cqrs_Test.Application.UseCase.Product.Queries.GetProducts;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace cqrs_Test.Presenter.Controller
 {
     [ApiController]
-
     [Route("product")]
     public class ProductController : ControllerBase
     {
-        private readonly Contextt konteks;
+        private IMediator meciater;
 
-        public ProductController(Contextt context)
+        public ProductController(IMediator mediatr)
         {
-            konteks = context;
+            meciater = mediatr;
         }
 
+
         [HttpGet]
-        public IActionResult Get()
+        public async Task<ActionResult<GetProductsDto>> Get()
         {
-            List<object> allData = new List<object>();
-            var data = konteks.Product;
-            foreach (var x in data)
-            {
-                allData.Add(new { x.id, x.merhcant_id, x.name, x.price });
-            }
-            return Ok(new { Message = "Success retreiving data", Status = true, Data = allData });
+            var result = new GetProductsQuery();
+            return Ok(await meciater.Send(result));
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int ID)
+        public async Task<ActionResult<GetProductDto>> Get(int ID)
         {
-            var data = konteks.Product.Find(ID);
-
-            if (data == null)
-            {
-                return NotFound(new { Message = "Customer not found", Status = false });
-            }
-
-            return Ok(new { Message = "Success retreiving data", Status = true, Data = data });
+            var result = new GetProductQuery(ID);
+            return Ok(await meciater.Send(result));
         }
 
         [HttpPost]
-        public IActionResult Post(RequestData<Products> data)
+        public async Task<IActionResult> Post(PostProductCommand data)
         {
-            konteks.Product.Add(data.Dataa.Attributes);
-            konteks.SaveChanges();
-            return Ok();
+            var result = await meciater.Send(data);
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, RequestData<Products> data)
+        public async Task<IActionResult> Put(int ID, PutProductCommand data)
         {
-            var query = konteks.Product.Find(id);
-            query.merhcant_id = data.Dataa.Attributes.merhcant_id;
-            query.name = data.Dataa.Attributes.name;
-            query.price = data.Dataa.Attributes.price;
-            query.updated_at = DateTime.Now;
-            konteks.SaveChanges();
-            return NoContent();
+            data.Dataa.Attributes.id = ID;
+            var result = await meciater.Send(data);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int ID)
         {
-            var data = await konteks.Product.FindAsync(id);
-
-            if (data == null)
-            {
-                return NotFound(new { Message = "Customer not found", Status = false });
-            }
-
-            konteks.Product.Remove(data);
-            await konteks.SaveChangesAsync();
-
-            return Ok();
+            var command = new DeleteProductCommand(ID);
+            var result = await meciater.Send(command);
+            return result != null ? (IActionResult)Ok(new { Message = "success" }) : NotFound(new { Message = "not found" });
         }
 
     }

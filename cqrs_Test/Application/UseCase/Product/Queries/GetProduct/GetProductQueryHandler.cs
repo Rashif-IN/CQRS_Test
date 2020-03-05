@@ -18,7 +18,7 @@ namespace cqrs_Test.Application.UseCase.Product.Queries.GetProduct
         public async Task<GetProductDto> Handle(GetProductQuery request, CancellationToken cancellationToken)
         {
 
-            var result = await konteks.Product.FirstOrDefaultAsync(e => e.id == request.id);
+            var result = await konteks.Product.FirstOrDefaultAsync(e => e.id == request.Id);
 
             return new GetProductDto
             {

@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using cqrs_Test.Application.Interfaces;
 using cqrs_Test.Application.Models.Query;
+using MediatR;
 
 namespace cqrs_Test.Application.UseCase.Merchant.Command.PutMerchant
 {
@@ -14,15 +15,16 @@ namespace cqrs_Test.Application.UseCase.Merchant.Command.PutMerchant
         {
             konteks = context;
         }
-        public async Task<PutMerchantCommandDto> Handle(RequestData<PutMerchantCommand> request, CancellationToken cancellationToken, int ID)
-        {
+        
 
-            var mer = konteks.merhcants.Find(ID);
-            mer.name = request.Dataa.Attributes.Data.name;
-            mer.image = request.Dataa.Attributes.Data.image;
-            mer.address = request.Dataa.Attributes.Data.address;
-            mer.rating = request.Dataa.Attributes.Data.rating;
-            mer.updated_at = request.Dataa.Attributes.Data.updated_at;
+        public async Task<PutMerchantCommandDto> Handle(PutMerchantCommand request, CancellationToken cancellationToken)
+        {
+            var mer = konteks.merhcants.Find(request.Dataa.Attributes.id);
+            mer.name = request.Dataa.Attributes.name;
+            mer.image = request.Dataa.Attributes.image;
+            mer.address = request.Dataa.Attributes.address;
+            mer.rating = request.Dataa.Attributes.rating;
+            mer.updated_at = request.Dataa.Attributes.updated_at;
 
 
 
@@ -33,7 +35,6 @@ namespace cqrs_Test.Application.UseCase.Merchant.Command.PutMerchant
                 Status = true,
                 Message = "Merchant successfully putted"
             };
-
         }
     }
 }

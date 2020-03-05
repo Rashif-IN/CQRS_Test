@@ -4,7 +4,7 @@ using MediatR;
 
 namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerPaymentCards
 {
-    public class GetCustomerPaymentCardsQuery : IRequest<GetCustomerPaymentCardDto>
+    public class GetCustomerPaymentCardsQuery : IRequest<GetCustomerPaymentCardsDto>
     {
     }
 }
