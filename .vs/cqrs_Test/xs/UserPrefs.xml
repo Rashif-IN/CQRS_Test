@@ -2,15 +2,8 @@
   <MonoDevelop.Ide.ItemProperties.cqrs__Test PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="cqrs_Test/Startup.cs">
     <Files>
-      <File FileName="cqrs_Test/Presenter/Controller/CustomerController.cs" Line="57" Column="56" />
-      <File FileName="cqrs_Test/Presenter/Controller/CPCController.cs" Line="10" Column="15" NotebookId="1" />
-      <File FileName="cqrs_Test/Presenter/Controller/MerchantController.cs" Line="62" Column="55" NotebookId="1" />
-      <File FileName="cqrs_Test/Presenter/Controller/ProductController.cs" Line="13" Column="41" NotebookId="1" />
-      <File FileName="cqrs_Test/Presenter/Controller/AuthController.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="cqrs_Test/Application/UseCase/Customer/Queries/GetCustomer/GetCustomerQueryHandler.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="cqrs_Test/Application/Interfaces/IContext.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="cqrs_Test/Infrastructure/Persistences/Context.cs" Line="17" Column="1" NotebookId="1" />
-      <File FileName="cqrs_Test/Startup.cs" Line="36" Column="42" NotebookId="1" />
+      <File FileName="cqrs_Test/Startup.cs" Line="53" Column="70" />
+      <File FileName="cqrs_Test/Application/UseCase/CustomerPaymentCard/Queries/GetCustomerPaymentCard/GetCustomerPaymentCardQueryHandler.cs" Line="10" Column="48" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,16 +21,6 @@
                   <Node name="CustomerPaymentCard" expanded="True">
                     <Node name="Queries" expanded="True">
                       <Node name="GetCustomerPaymentCard" expanded="True" />
-                    </Node>
-                  </Node>
-                  <Node name="Merchant" expanded="True">
-                    <Node name="Queries" expanded="True">
-                      <Node name="GetMerchant" expanded="True" />
-                    </Node>
-                  </Node>
-                  <Node name="Product" expanded="True">
-                    <Node name="Queries" expanded="True">
-                      <Node name="GetProduct" expanded="True" />
                     </Node>
                   </Node>
                 </Node>

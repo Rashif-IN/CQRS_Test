@@ -1,14 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using cqrs_Test.Application.Interfaces;
 using cqrs_Test.Application.Models.Query;
 using cqrs_Test.Application.UseCase.Customer.Command.PostCustomer;
+using cqrs_Test.Application.UseCase.Customer.Queries.GetCustomer;
 using cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PostCustomerPaymentCard;
+using cqrs_Test.Application.UseCase.CustomerPaymentCard.Queries.GetCustomerPaymentCard;
 using cqrs_Test.Application.UseCase.Merchant.Command.PostMerchant;
+using cqrs_Test.Application.UseCase.Merchant.Queries.GetMerchant;
 using cqrs_Test.Application.UseCase.Product.Command.PostProduct;
+using cqrs_Test.Application.UseCase.Product.Queries.GetProduct;
 using cqrs_Test.Domain.Entities;
 using cqrs_Test.Infrastructure.Persistences;
 using FluentValidation;
@@ -44,8 +49,13 @@ namespace cqrs_Test
 
             services.AddDbContext<Contextt>(option => option.UseNpgsql("Host=localhost;Database=cqrs;Username=postgres;Password=docker;"));
 
+
             services.AddMvc().AddFluentValidation();
 
+            services.AddMediatR(typeof(GetCustomerQueryHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(GetCustomerPaymentQueryHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(GetMerchantQueryHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(GetProductQueryHandler).GetTypeInfo().Assembly);
 
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
