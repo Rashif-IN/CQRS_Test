@@ -15,7 +15,7 @@ using cqrs_Test.Application.UseCase.Merchant.Queries.GetMerchant;
 using cqrs_Test.Application.UseCase.Product.Command.PostProduct;
 using cqrs_Test.Application.UseCase.Product.Queries.GetProduct;
 using cqrs_Test.Domain.Entities;
-using cqrs_Test.Infrastructure.Persistences;
+//using cqrs_Test.Infrastructure.Persistences;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -47,7 +47,7 @@ namespace cqrs_Test
         {
             services.AddControllers();
 
-            services.AddDbContext<Contextt>(option => option.UseNpgsql("Host=localhost;Database=cqrs;Username=postgres;Password=docker;"));
+            services.AddDbContext<IContext>(option => option.UseNpgsql("Host=localhost;Database=cqrs;Username=postgres;Password=docker;"));
 
 
             services.AddMvc().AddFluentValidation();

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using cqrs_Test.Application.Interfaces;
@@ -9,9 +10,10 @@ using cqrs_Test.Application.Interfaces;
 namespace cqrs_Test.Migrations
 {
     [DbContext(typeof(IContext))]
-    partial class ContexttModelSnapshot : ModelSnapshot
+    [Migration("20200306030349_InitialCreate2")]
+    partial class InitialCreate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

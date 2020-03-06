@@ -45,8 +45,8 @@
     <Folder Include="Application\UseCase\Product\Queries\" />
     <Folder Include="Application\UseCase\Customer\Queries\GetCustomer\" />
     <Folder Include="Application\UseCase\Customer\Queries\GetCustomers\" />
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Infrastructure\Persistences\" />
+<!--    <Folder Include="Infrastructure\" />-->
+<!--    <Folder Include="Infrastructure\Persistences\" />-->
     <Folder Include="Application\UseCase\Customer\Command\DeleteCustomer\" />
     <Folder Include="Application\UseCase\Customer\Command\PutCustomer\" />
     <Folder Include="Application\UseCase\Customer\Command\PostCustomer\" />
