@@ -32,11 +32,11 @@ namespace cqrs_Test.Application.UseCase.Customer.Command.PostCustomer
             };
             if (request.Dataa.Attributes.sex == "male")
             {
-                request.Dataa.Attributes.gender = kelamin.male;
+                customers.gender = kelamin.male;
             }
             else if (request.Dataa.Attributes.sex == "female")
             {
-                request.Dataa.Attributes.gender = kelamin.female;
+                customers.gender = kelamin.female;
             }
             konteks.Customer.Add(customers);
             await konteks.SaveChangesAsync(cancellationToken);
