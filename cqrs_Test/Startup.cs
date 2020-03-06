@@ -61,6 +61,7 @@ namespace cqrs_Test
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(option => {
+                option.SaveToken = false;
                 option.RequireHttpsMetadata = false;
                 option.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -92,6 +93,7 @@ namespace cqrs_Test
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
