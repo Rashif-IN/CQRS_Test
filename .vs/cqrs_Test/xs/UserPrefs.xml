@@ -1,12 +1,22 @@
 ﻿<Properties StartupConfiguration="{40A35001-75A5-4345-8F30-28479483287E}|Default">
   <MonoDevelop.Ide.ItemProperties.cqrs__Test PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="cqrs_Test/Presenter/Controller/CPCController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="cqrs_Test/Application/UseCase/Product/Command/PutProduct/PutProductCommandHandler.cs">
     <Files>
-      <File FileName="cqrs_Test/Startup.cs" Line="68" Column="137" />
+      <File FileName="cqrs_Test/Startup.cs" Line="96" Column="37" />
       <File FileName="cqrs_Test/Presenter/Controller/CPCController.cs" Line="35" Column="10" />
       <File FileName="cqrs_Test/Presenter/Controller/AuthController.cs" Line="30" Column="59" />
       <File FileName="cqrs_Test/Application/UseCase/CustomerPaymentCard/Queries/GetCustomerPaymentCards/GetCustomerPaymentCardsQueryHandler.cs" Line="1" Column="1" />
-      <File FileName="cqrs_Test/Domain/Entities/CustomerPaymentCard.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Domain/Entities/CustomerPaymentCard.cs" Line="14" Column="146" />
+      <File FileName="cqrs_Test/Domain/Entities/Customers.cs" Line="32" Column="9" />
+      <File FileName="cqrs_Test/Domain/Entities/Merchant.cs" Line="12" Column="146" />
+      <File FileName="cqrs_Test/Domain/Entities/Products.cs" Line="11" Column="146" />
+      <File FileName="cqrs_Test/Application/UseCase/Customer/Command/PostCustomer/PostCustomerCommandHandler.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Customer/Command/PostCustomer/PostCustomerCommandValidation.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Customer/Command/PutCustomer/PutCustomerCommandHandler.cs" Line="32" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/CustomerPaymentCard/Command/PostCustomerPaymentCard/PostCustomerPaymentCardCommandHandler.cs" Line="1" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/CustomerPaymentCard/Command/PutCustomerPaymentCard/PutCustomerPaymentCardCommandHandler.cs" Line="30" Column="1" />
+      <File FileName="cqrs_Test/Application/UseCase/Merchant/Command/PutMerchant/PutMerchantCommandHandler.cs" Line="27" Column="29" />
+      <File FileName="cqrs_Test/Application/UseCase/Product/Command/PutProduct/PutProductCommandHandler.cs" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,15 +28,34 @@
                 <Node name="Interfaces" expanded="True" />
                 <Node name="UseCase" expanded="True">
                   <Node name="Customer" expanded="True">
+                    <Node name="Command" expanded="True">
+                      <Node name="PostCustomer" expanded="True" />
+                      <Node name="PutCustomer" expanded="True" />
+                    </Node>
                     <Node name="Queries" expanded="True">
                       <Node name="GetCustomer" expanded="True" />
                     </Node>
                   </Node>
                   <Node name="CustomerPaymentCard" expanded="True">
-                    <Node name="Command" expanded="True" />
+                    <Node name="Command" expanded="True">
+                      <Node name="PostCustomerPaymentCard" expanded="True" />
+                      <Node name="PutCustomerPaymentCard" expanded="True" />
+                    </Node>
                     <Node name="Queries" expanded="True">
                       <Node name="GetCustomerPaymentCard" expanded="True" />
                       <Node name="GetCustomerPaymentCards" expanded="True" />
+                    </Node>
+                  </Node>
+                  <Node name="Merchant" expanded="True">
+                    <Node name="Command" expanded="True">
+                      <Node name="PutMerchant" expanded="True" />
+                    </Node>
+                  </Node>
+                  <Node name="Product" expanded="True">
+                    <Node name="Command" expanded="True">
+                      <Node name="PutProduct" expanded="True">
+                        <Node name="PutProductCommandHandler.cs" selected="True" />
+                      </Node>
                     </Node>
                   </Node>
                 </Node>
@@ -41,9 +70,7 @@
                 <Node name="20200305131226_InitialCreate.cs" expanded="True" />
               </Node>
               <Node name="Presenter" expanded="True">
-                <Node name="Controller" expanded="True">
-                  <Node name="CPCController.cs" selected="True" />
-                </Node>
+                <Node name="Controller" expanded="True" />
               </Node>
             </Node>
           </Node>

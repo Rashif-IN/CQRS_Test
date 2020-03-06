@@ -24,7 +24,7 @@ namespace cqrs_Test.Application.UseCase.Merchant.Command.PutMerchant
             mer.image = request.Dataa.Attributes.image;
             mer.address = request.Dataa.Attributes.address;
             mer.rating = request.Dataa.Attributes.rating;
-            mer.updated_at = request.Dataa.Attributes.updated_at;
+            mer.updated_at = Convert.ToInt64((DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds);
 
 
 

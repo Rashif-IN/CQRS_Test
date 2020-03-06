@@ -27,8 +27,8 @@ namespace cqrs_Test.Domain.Entities
             public string sex { get; set; }
             public string email { get; set; }
             public string phone_number { get; set; }
-            public long created_at { get; set; }
-            public long updated_at { get; set; }
+            public long created_at { get; set; } = Convert.ToInt64((DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds);
+            public long updated_at { get; set; } = Convert.ToInt64((DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds);
         }
     
 }

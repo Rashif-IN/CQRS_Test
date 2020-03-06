@@ -22,7 +22,7 @@ namespace cqrs_Test.Application.UseCase.Product.Command.PutProduct
             pro.merhcant_id = request.Dataa.Attributes.merhcant_id;
             pro.name = request.Dataa.Attributes.name;
             pro.price = request.Dataa.Attributes.price;
-            pro.updated_at = request.Dataa.Attributes.updated_at;
+            pro.updated_at = Convert.ToInt64((DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds);
 
 
 

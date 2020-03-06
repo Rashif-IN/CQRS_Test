@@ -26,7 +26,7 @@ namespace cqrs_Test.Application.UseCase.CustomerPaymentCard.Command.PutCustomerP
             cpc.exp_year = request.Dataa.Attributes.exp_year;
             cpc.postal_code = request.Dataa.Attributes.postal_code;
             cpc.credit_card_number = request.Dataa.Attributes.credit_card_number;
-            cpc.updated_at = request.Dataa.Attributes.updated_at;
+            cpc.updated_at =  Convert.ToInt64((DateTime.Now - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds);
 
 
 
